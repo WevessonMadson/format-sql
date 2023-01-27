@@ -1,7 +1,7 @@
 * {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
 body {
@@ -53,6 +53,7 @@ div#botao {
   font-weight: bold;
   border-radius: 5px;
   transition: padding 0.3s;
+  width: fit-content;
 }
 
 .botao:hover {
@@ -62,66 +63,57 @@ div#botao {
 }
 
 #result {
-    display: none;
-    padding-bottom: 20px;
+  display: none;
+  padding-bottom: 20px;
 }
 
-
 #customers {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  #customers td,
-  #customers th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: fit-content;
+}
 
-  #customers tr:nth-child(odd) {
-    background-color: #949191;
-  }
-  
-  #customers tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  #customers tr:hover {
-    background-color: #ddd;
-  }
-  
-  #customers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #8104aaa0;
-    color: white;
-  }
-  
-  #tableCorpo td {
-    text-align: center;
-  }
-  
-  #tableCorpo a {
-    text-decoration: none;
-    color: black;
-  }
+#customers td,
+#customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
 
-  #erroMsg {
-    margin-top: 20px;
-    padding: 25px;
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    background-color: rgba(200, 143, 143, 0.737);
-    font-size: 15pt;
-    text-align: center;
-  }
+#customers tr:nth-child(odd) {
+  background-color: #949191;
+}
 
-  #erroMsg span {
-    color: rgb(222, 219, 21);
-    font-size: 40pt;
-  }
+#customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+  background-color: #ddd;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #8104aaa0;
+  color: white;
+}
+
+#erroMsg {
+  margin-top: 20px;
+  padding: 25px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  background-color: rgba(200, 143, 143, 0.737);
+  font-size: 15pt;
+  text-align: center;
+  width: fit-content;
+}
+
+#erroMsg span {
+  color: rgb(222, 219, 21);
+  font-size: 40pt;
+}
