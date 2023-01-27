@@ -3,7 +3,7 @@ function getKeys(sql) {
         const initialIndex = sql.indexOf("(") + 1;
         const finalIndex = sql.indexOf(")");
 
-        const keys = sql.substring(initialIndex, finalIndex).split(",").map(element => element.replace(" ", ""));
+        const keys = sql.substring(initialIndex, finalIndex).split(",").map(element => element.trim());
 
         return keys;
 
@@ -19,7 +19,7 @@ function getValues(sql) {
         const initialIndex = sql.lastIndexOf("(") + 1;
         const finalIndex = sql.lastIndexOf(")");
 
-        const values = sql.substring(initialIndex, finalIndex).split(",").map(element => element.replace(/[",'," "]/g, ""));
+        const values = sql.substring(initialIndex, finalIndex).split(",").map(element => element.trim().replace(/[",',]/g, ""));
 
         return values;
 
