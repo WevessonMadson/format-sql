@@ -71,10 +71,7 @@ function getFormatSql(sql) {
     }
 }
 
-
-
-
-document.getElementById("gerar").addEventListener("click", (e) => {
+function renderReturn(e) {
     e.preventDefault();
 
     const sql = document.getElementById("textSql").value;
@@ -111,4 +108,35 @@ document.getElementById("gerar").addEventListener("click", (e) => {
         </tbody>
     </table>`;
     }
-});
+}
+
+function darkMode(e) {
+    e.preventDefault();
+
+    const button_dark = document.querySelector("#dark-mode");
+    const html = document.querySelector("html");
+    
+    html.classList.toggle("dark-mode");
+
+    if (button_dark.innerText == "toggle_off") {
+        button_dark.innerText = "toggle_on"
+        localStorage.setItem("dark", "toggle_on");
+    } else {
+        button_dark.innerText = "toggle_off"
+        localStorage.setItem("dark", "toggle_off");
+    }
+}
+
+function reloadDarkMode() {
+    let dark = localStorage.getItem("dark") || "toggle_off";
+
+    document.querySelector("#dark-mode").innerText = dark;
+
+    if (dark == "toggle_on") {
+        document.querySelector("html").classList.toggle("dark-mode");
+    }
+}
+
+document.getElementById("gerar").addEventListener("click", renderReturn);
+document.getElementById("dark-mode").addEventListener("click", darkMode);
+window.addEventListener("DOMContentLoaded", reloadDarkMode);

@@ -1,3 +1,27 @@
+:root {
+  --body-bg-color: white;
+  --button-dark-color: black;
+  --head-color: black;
+  --text-area-color: #D3D3D3;
+  --th-bg-color: #68028aa0;
+  --td-th-border: 1px solid rgb(0, 0, 0);
+  --tr-bg-color-odd: #9f9e9e;
+  --tr-bg-color-even: #dfd2d2;
+  --tr-bg-color-hover: rgb(246, 242, 242);
+}
+
+.dark-mode:root {
+  --body-bg-color: rgb(19, 19, 19);
+  --button-dark-color: white;
+  --head-color: white;
+  --text-area-color: rgba(254, 254, 254, 0.935);
+  --th-bg-color: #8104aaa0;
+  --td-th-border: 1px solid #ddd;
+  --tr-bg-color-odd: #949191;
+  --tr-bg-color-even: #f2f2f2;
+  --tr-bg-color-hover: rgb(203, 193, 193);
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -5,7 +29,20 @@
 }
 
 body {
-  background-color: rgb(19, 19, 19);
+  background-color: var(--body-bg-color);
+  transition: 0.2s;
+}
+
+#dark-mode {
+  color: var(--button-dark-color);
+  font-size: 5em;
+  position: absolute;
+  left: 90%;
+  background-color: none;
+}
+
+#dark-mode:hover {
+  cursor: pointer;
 }
 
 #head {
@@ -16,12 +53,11 @@ body {
   gap: 10px;
   font-size: 20pt;
   text-align: center;
-  color: white;
+  color: var(--head-color);
+  transition: color 0.2s;
 }
 
 #corpo {
-  min-height: 100vh;
-  min-width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,7 +66,7 @@ body {
 #textSql {
   margin-top: 25px;
   margin-bottom: 20px;
-  background-color: rgba(254, 254, 254, 0.935);
+  background-color: var(--text-area-color);
   color: rgb(-254, -254, -254);
   width: 70vw;
   height: 30vh;
@@ -47,7 +83,7 @@ div#botao {
 .botao {
   padding: 10px;
   font-size: 13pt;
-  background-color: #8104aaa0;
+  background-color: #8104aa;
   color: #fff;
   font-weight: bold;
   border-radius: 5px;
@@ -79,7 +115,7 @@ button.botao:hover {
 
 #customers td,
 #customers th {
-  border: 1px solid #ddd;
+  border: var(--td-th-border);
   padding: 8px;
 }
 
@@ -88,22 +124,22 @@ button.botao:hover {
 }
 
 #customers tr:nth-child(odd) {
-  background-color: #949191;
+  background-color: var(--tr-bg-color-odd);
 }
 
 #customers tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: var(--tr-bg-color-even);
 }
 
 #customers tr:hover {
-  background-color: rgb(203, 193, 193);
+  background-color: var(--tr-bg-color-hover);
 }
 
 #customers th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #8104aaa0;
+  background-color: var(--th-bg-color);
   color: white;
 }
 
@@ -145,6 +181,14 @@ button.botao:hover {
   #customers {
     width: 690px;
   }
+
+  #dark-mode {
+    font-size: 4em;
+  }
+
+  #textSql {
+    font-size: 15px;
+  }
 }
 
 @media screen and (max-width: 545px), (max-width: 740px) {
@@ -156,9 +200,13 @@ button.botao:hover {
   #customers {
     width: 490px;
   }
+
+  #dark-mode {
+    font-size: 3em;
+  }
 }
 
-@media screen and (max-width: 320px), (max-width: 540px) {
+@media screen and (max-width: 400px), (max-width: 540px) {
   #head {
     font-size: 12pt;
   }
@@ -167,9 +215,26 @@ button.botao:hover {
     font-size: 8pt;
     margin-top: 5px;
   }
+
   #erroMsg,
   #customers {
-    width: 250px;
+    width: 380px;
+  }
+  
+  #dark-mode {
+    font-size: 2em;
+    top: 9px;
+  }
+
+  #textSql {
+    font-size: 13px;
+  }
+}
+
+@media screen and (min-width: 313px) and (max-width: 399px) {
+  #erroMsg,
+  #customers {
+    width: 280px;
   }
 }
 
@@ -182,6 +247,19 @@ button.botao:hover {
     font-size: 5pt;
     padding: 1px;
   }
+
+  #erroMsg,
+  #customers {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 310px) {
+  #dark-mode {
+    font-size: 1em;
+    left: 80%;
+  }
+
   #erroMsg,
   #customers {
     width: 100px;

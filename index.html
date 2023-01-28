@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +9,10 @@
     <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
     <title>Format Sql</title>
 </head>
-
 <body>
     <div id="corpo">
         <head>
+            <span id="dark-mode" class="material-icons"></span>
             <div id="head">
                 <p>
                     Bem-vindo ao formatador de SQL!
@@ -24,7 +23,8 @@
             </div>
         </head>
         <form>
-            <textarea id="textSql" cols="75" rows="15"></textarea>
+            <textarea id="textSql" cols="75" rows="15"
+                placeholder="insert into table (campo1, campo2, campo3)&#10;values (valor1, valor2, valor3);"></textarea>
             <div id="botao">
                 <button id="gerar" class="botao">GERAR FORMATAÇÃO</button>
             </div>
@@ -33,5 +33,4 @@
     </div>
     <script src="js/index.js"></script>
 </body>
-
 </html>
