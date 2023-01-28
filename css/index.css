@@ -17,7 +17,6 @@ body {
   font-size: 20pt;
   text-align: center;
   color: white;
-  text-shadow: 2px 2px #8104aaa0;
 }
 
 #corpo {
@@ -56,7 +55,11 @@ div#botao {
   width: fit-content;
 }
 
-.botao:hover {
+span.botao {
+  display: inline-block;
+}
+
+button.botao:hover {
   cursor: pointer;
   background-color: #8d4fa2e1;
   padding: 13px;
@@ -70,13 +73,18 @@ div#botao {
 #customers {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: fit-content;
+  table-layout: fixed;
+  width: 1200px;
 }
 
 #customers td,
 #customers th {
   border: 1px solid #ddd;
   padding: 8px;
+}
+
+#customers td {
+  word-break: break-all;
 }
 
 #customers tr:nth-child(odd) {
@@ -88,7 +96,7 @@ div#botao {
 }
 
 #customers tr:hover {
-  background-color: #ddd;
+  background-color: rgb(203, 193, 193);
 }
 
 #customers th {
@@ -116,4 +124,66 @@ div#botao {
 #erroMsg span {
   color: rgb(222, 219, 21);
   font-size: 40pt;
+}
+
+@media screen and (max-width: 1254px) {
+  #customers {
+    width: 900px;
+  }
+}
+
+@media screen and (max-width: 745px), (max-width: 950px) {
+  #head {
+    font-size: 14pt;
+  }
+
+  .botao {
+    font-size: 9pt;
+  }
+
+  #erroMsg,
+  #customers {
+    width: 690px;
+  }
+}
+
+@media screen and (max-width: 545px), (max-width: 740px) {
+  #head {
+    font-size: 13pt;
+  }
+
+  #erroMsg,
+  #customers {
+    width: 490px;
+  }
+}
+
+@media screen and (max-width: 320px), (max-width: 540px) {
+  #head {
+    font-size: 12pt;
+  }
+
+  .botao {
+    font-size: 8pt;
+    margin-top: 5px;
+  }
+  #erroMsg,
+  #customers {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 312px) {
+  #head {
+    font-size: 9pt;
+  }
+
+  .botao {
+    font-size: 5pt;
+    padding: 1px;
+  }
+  #erroMsg,
+  #customers {
+    width: 100px;
+  }
 }
