@@ -118,21 +118,21 @@ function darkMode(e) {
     
     html.classList.toggle("dark-mode");
 
-    if (button_dark.innerText == "toggle_off") {
-        button_dark.innerText = "toggle_on"
-        localStorage.setItem("dark", "toggle_on");
+    if (button_dark.innerText == "light_mode") {
+        button_dark.innerText = "dark_mode"
+        localStorage.setItem("dark", "dark_mode");
     } else {
-        button_dark.innerText = "toggle_off"
-        localStorage.setItem("dark", "toggle_off");
+        button_dark.innerText = "light_mode"
+        localStorage.setItem("dark", "light_mode");
     }
 }
 
 function reloadDarkMode() {
-    let dark = localStorage.getItem("dark") || "toggle_off";
+    let dark = localStorage.getItem("dark") || "dark_mode";
 
     document.querySelector("#dark-mode").innerText = dark;
 
-    if (dark == "toggle_on") {
+    if (dark == "light_mode") {
         document.querySelector("html").classList.toggle("dark-mode");
     }
 }

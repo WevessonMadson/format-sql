@@ -10,18 +10,20 @@
     <title>Format Sql</title>
 </head>
 <body>
+    <div id="menu">
+        <span id="dark-mode" class="material-icons"></span>
+    </div>
     <div id="corpo">
-        <head>
-            <span id="dark-mode" class="material-icons"></span>
+        <header>
             <div id="head">
+                <h1>
+                    BEM-VINDO AO FORMATADOR DE SQL!
+                </h1>
                 <p>
-                    Bem-vindo ao formatador de SQL!
-                </p>
-                <p>
-                    Cole seu insert na área abaixo e clique em <span class="botao">GERAR FORMATAÇÃO</span>
+                    Cole seu INSERT abaixo e clique em GERAR FORMATAÇÃO
                 </p>
             </div>
-        </head>
+        </header>
         <form>
             <textarea id="textSql" cols="75" rows="15"
                 placeholder="insert into table (campo1, campo2, campo3)&#10;values (valor1, valor2, valor3);"></textarea>
@@ -29,6 +31,10 @@
                 <button id="gerar" class="botao">GERAR FORMATAÇÃO</button>
             </div>
         </form>
+        <div id="assets">
+            <img src="./assets/mysql.png" alt="Logotipo do banco de dados mysql.">
+            <img src="./assets/postgresql.png" alt="Logotipo do banco de dados postgresql.">
+        </div>
         <div id="result"></div>
     </div>
     <script src="js/index.js"></script>

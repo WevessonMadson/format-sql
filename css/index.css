@@ -1,31 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Oswald:wght@200;300;400;500;600;700&family=Roboto:wght@700;900&display=swap');
+
 :root {
-  --body-bg-color: white;
+  --body-bg-color: #eef4f4;
+  --menu-header-bg-color: rgb(47, 73, 122);
   --button-dark-color: black;
-  --head-color: black;
-  --text-area-color: #D3D3D3;
+  --head-color: #4063a6;
   --th-bg-color: #68028aa0;
   --td-th-border: 1px solid rgb(0, 0, 0);
   --tr-bg-color-odd: #9f9e9e;
   --tr-bg-color-even: #dfd2d2;
   --tr-bg-color-hover: rgb(246, 242, 242);
+  --dark-bg-color: rgb(19, 19, 19);
 }
 
 .dark-mode:root {
   --body-bg-color: rgb(19, 19, 19);
+  --menu-header-bg-color: rgb(47, 73, 122);
   --button-dark-color: white;
   --head-color: white;
-  --text-area-color: rgba(254, 254, 254, 0.935);
   --th-bg-color: #8104aaa0;
   --td-th-border: 1px solid #ddd;
   --tr-bg-color-odd: #949191;
   --tr-bg-color-even: #f2f2f2;
   --tr-bg-color-hover: rgb(203, 193, 193);
+  --text-shadow-button-dark: 1.5px 1.5px white;
+  --dark-bg-color: #eef4f4;
 }
 
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif, 'cursive';
+  font-weight: 800;
+  color: #4063a6;
 }
 
 body {
@@ -33,11 +41,21 @@ body {
   transition: 0.2s;
 }
 
+#menu {
+  background-color: var(--menu-header-bg-color);
+  min-height: 60px;
+}
+
 #dark-mode {
-  color: var(--button-dark-color);
-  font-size: 5em;
+  /* color: var(--button-dark-color); */
+  color: none;
+  /* text-shadow: var(--text-shadow-button-dark); */
+  border-radius: 40px;
+  background-color: var(--dark-bg-color);
+  font-size: 2.5em;
   position: absolute;
-  left: 90%;
+  top: 5px;
+  left: 95%;
   background-color: none;
 }
 
@@ -51,7 +69,7 @@ body {
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  font-size: 20pt;
+  font-size: 15pt;
   text-align: center;
   color: var(--head-color);
   transition: color 0.2s;
@@ -64,11 +82,13 @@ body {
 }
 
 #textSql {
+  padding: 5px;
   margin-top: 25px;
   margin-bottom: 20px;
-  background-color: var(--text-area-color);
+  background-color: #ffffff;
   color: rgb(-254, -254, -254);
-  width: 70vw;
+  border: 2.5px solid #9dcacc;
+  width: 700px;
   height: 30vh;
   font-size: 16pt;
   font-weight: bold;
@@ -81,24 +101,26 @@ div#botao {
 }
 
 .botao {
-  padding: 10px;
+  border: none;
+  padding: 5px;
   font-size: 13pt;
-  background-color: #8104aa;
-  color: #fff;
+  background-color: #9dcacc;
+  /* color: #fff; */
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 15px;
   transition: padding 0.3s;
   width: fit-content;
 }
 
-span.botao {
-  display: inline-block;
-}
-
 button.botao:hover {
   cursor: pointer;
-  background-color: #8d4fa2e1;
-  padding: 13px;
+  padding: 8px;
+}
+
+#assets {
+  display: flex;
+  align-content: center;
+  gap: 100px;
 }
 
 #result {
