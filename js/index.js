@@ -74,12 +74,13 @@ function getFormatSql(sql) {
 function renderReturn(e) {
     e.preventDefault();
 
-    const sql = document.getElementById("textSql").value;
+    const sql = document.getElementById("textSql");
     const result = document.getElementById("result");
 
-    const objectFormated = getFormatSql(sql);
+    const objectFormated = getFormatSql(sql.value);
 
     result.style.display = "block";
+    sql.style.height = "15vh";
 
     if (typeof objectFormated == "string") {
         result.innerHTML = `
@@ -99,8 +100,8 @@ function renderReturn(e) {
     <table id='customers'>
         <thead>
             <tr>
-                <th>Campo</th>
-                <th>Valor</th>
+                <th>CAMPO</th>
+                <th>VALOR</th>
             </tr>
         </thead>
         <tbody>

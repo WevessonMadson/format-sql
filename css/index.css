@@ -1,29 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Oswald:wght@200;300;400;500;600;700&family=Roboto:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&family=Roboto:wght@700;900&display=swap');
 
 :root {
   --body-bg-color: #eef4f4;
-  --menu-header-bg-color: rgb(47, 73, 122);
-  --button-dark-color: black;
-  --head-color: #4063a6;
-  --th-bg-color: #68028aa0;
-  --td-th-border: 1px solid rgb(0, 0, 0);
-  --tr-bg-color-odd: #9f9e9e;
-  --tr-bg-color-even: #dfd2d2;
+  --primary-color: rgb(47, 73, 122);
+  --secundary-color: #9dcacc;
+  --tr-bg-color-odd: #b4e7ea;
+  --tr-bg-color-even: #b9ede9;
   --tr-bg-color-hover: rgb(246, 242, 242);
   --dark-bg-color: rgb(19, 19, 19);
 }
 
 .dark-mode:root {
-  --body-bg-color: rgb(19, 19, 19);
-  --menu-header-bg-color: rgb(47, 73, 122);
-  --button-dark-color: white;
-  --head-color: white;
-  --th-bg-color: #8104aaa0;
-  --td-th-border: 1px solid #ddd;
-  --tr-bg-color-odd: #949191;
-  --tr-bg-color-even: #f2f2f2;
-  --tr-bg-color-hover: rgb(203, 193, 193);
-  --text-shadow-button-dark: 1.5px 1.5px white;
+  --body-bg-color: rgb(33, 32, 32);
   --dark-bg-color: #eef4f4;
 }
 
@@ -33,7 +21,7 @@
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif, 'cursive';
   font-weight: 800;
-  color: #4063a6;
+  color: var(--primary-color);
 }
 
 body {
@@ -42,19 +30,17 @@ body {
 }
 
 #menu {
-  background-color: var(--menu-header-bg-color);
-  min-height: 60px;
+  background-color: var(--primary-color);
+  height: 60px;
 }
 
 #dark-mode {
-  /* color: var(--button-dark-color); */
   color: none;
-  /* text-shadow: var(--text-shadow-button-dark); */
   border-radius: 40px;
   background-color: var(--dark-bg-color);
   font-size: 2.5em;
   position: absolute;
-  top: 5px;
+  top: 10px;
   left: 95%;
   background-color: none;
 }
@@ -64,14 +50,14 @@ body {
 }
 
 #head {
-  margin-top: 20px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  font-size: 15pt;
+  font-size: 20pt;
   text-align: center;
-  color: var(--head-color);
+  color: var(--primary-color);
   transition: color 0.2s;
 }
 
@@ -82,16 +68,14 @@ body {
 }
 
 #textSql {
-  padding: 5px;
+  padding: 7px;
   margin-top: 25px;
   margin-bottom: 20px;
   background-color: #ffffff;
-  color: rgb(-254, -254, -254);
-  border: 2.5px solid #9dcacc;
+  border: 2.5px solid var(--secundary-color);
   width: 700px;
-  height: 30vh;
-  font-size: 16pt;
-  font-weight: bold;
+  height: 25vh;
+  font-weight: 500;
 }
 
 div#botao {
@@ -104,17 +88,16 @@ div#botao {
   border: none;
   padding: 5px;
   font-size: 13pt;
-  background-color: #9dcacc;
-  /* color: #fff; */
+  background-color: var(--secundary-color);
   font-weight: bold;
   border-radius: 15px;
-  transition: padding 0.3s;
+  transition: padding 0.2s;
   width: fit-content;
 }
 
 button.botao:hover {
   cursor: pointer;
-  padding: 8px;
+  padding: 7px;
 }
 
 #assets {
@@ -126,23 +109,33 @@ button.botao:hover {
 #result {
   display: none;
   padding-bottom: 20px;
+  margin-top: 20px;
 }
 
 #customers {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
+  border-spacing: 5px 0.9997px;
   table-layout: fixed;
-  width: 1200px;
 }
 
 #customers td,
 #customers th {
-  border: var(--td-th-border);
   padding: 8px;
+  border: 3px solid var(--primary-color);
+  text-align: center;
+}
+
+#customers th {
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 30px;
 }
 
 #customers td {
   word-break: break-all;
+}
+
+#customers td:nth-child(even) {
+  text-align: left;
 }
 
 #customers tr:nth-child(odd) {
@@ -155,14 +148,6 @@ button.botao:hover {
 
 #customers tr:hover {
   background-color: var(--tr-bg-color-hover);
-}
-
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: var(--th-bg-color);
-  color: white;
 }
 
 #erroMsg {
@@ -184,106 +169,150 @@ button.botao:hover {
   font-size: 40pt;
 }
 
-@media screen and (max-width: 1254px) {
-  #customers {
-    width: 900px;
-  }
+#customers,
+#erroMsg {
+  min-width: 700px;
+  max-width: 900px;
 }
 
-@media screen and (max-width: 745px), (max-width: 950px) {
+@media screen and (max-width: 1060px) {
+  #dark-mode {
+    left: 94%;
+  }
+
   #head {
     font-size: 14pt;
   }
 
-  .botao {
-    font-size: 9pt;
-  }
-
-  #erroMsg,
-  #customers {
-    width: 690px;
-  }
-
-  #dark-mode {
-    font-size: 4em;
-  }
-
   #textSql {
-    font-size: 15px;
-  }
-}
-
-@media screen and (max-width: 545px), (max-width: 740px) {
-  #head {
-    font-size: 13pt;
+    width: 600px;
   }
 
   #erroMsg,
   #customers {
-    width: 490px;
+    min-width: 600px;
+    max-width: 800px;
+  }
+} 
+
+@media screen and (max-width: 895px) {
+  #dark-mode {
+    left: 93%;
   }
 
-  #dark-mode {
-    font-size: 3em;
+  #erroMsg,
+  #customers {
+    max-width: 700px;
   }
 }
 
-@media screen and (max-width: 400px), (max-width: 540px) {
+@media screen and (max-width: 743px) {
   #head {
     font-size: 12pt;
   }
 
+  #textSql {
+    width: 500px;
+  }
+
   .botao {
-    font-size: 8pt;
-    margin-top: 5px;
+    font-size: 10pt;
   }
 
   #erroMsg,
   #customers {
-    width: 380px;
+    min-width: 400px;
+    max-width: 600px;
   }
-  
+}
+
+@media screen and (max-width: 633px) {
   #dark-mode {
-    font-size: 2em;
-    top: 9px;
+    left: 92%;
+  }
+
+  #head {
+    font-size: 10pt;
   }
 
   #textSql {
-    font-size: 13px;
+    width: 400px;
   }
-}
 
-@media screen and (min-width: 313px) and (max-width: 399px) {
+  .botao {
+    font-size: 8pt;
+  }
+
   #erroMsg,
   #customers {
-    width: 280px;
+    min-width: 300px;
+    max-width: 500px;
   }
 }
 
-@media screen and (max-width: 312px) {
+@media screen and (max-width: 530px) {
+  #menu {
+    height: 50px;
+  }
+
+  #dark-mode {
+    font-size: 30px;
+  }
+
   #head {
     font-size: 9pt;
   }
 
+  #textSql {
+    width: 300px;
+    font-size: 8pt;
+  }
+
   .botao {
-    font-size: 5pt;
-    padding: 1px;
+    font-size: 7pt;
+  }
+
+  img {
+    width: 60px;
+    height: 60px;
   }
 
   #erroMsg,
   #customers {
-    width: 200px;
+    max-width: 400px;
   }
 }
 
-@media screen and (max-width: 310px) {
+@media screen and (max-width: 479px) {
+  #menu {
+    height: 40px;
+  }
+
   #dark-mode {
-    font-size: 1em;
-    left: 80%;
+    font-size: 22px;
+  }
+
+  #head {
+    font-size: 6pt;
+  }
+
+  #textSql {
+    width: 250px;
+    font-size: 7pt;
+  }
+
+  .botao {
+    font-size: 6pt;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
   }
 
   #erroMsg,
   #customers {
-    width: 100px;
+    min-width: 200px;
+    max-width: 250px;
   }
 }
