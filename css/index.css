@@ -186,12 +186,26 @@ button.botao:hover {
 
   #textSql {
     width: 600px;
+    height: 20vh;
   }
 
   #erroMsg,
   #customers {
     min-width: 600px;
     max-width: 800px;
+  }
+
+  #customers th {
+    font-size: 20px;
+  }
+
+  #customers td,
+  #erroMsg {
+    font-size: 14px;
+  }
+
+  #assets {
+    gap: 80px
   }
 } 
 
@@ -213,6 +227,8 @@ button.botao:hover {
 
   #textSql {
     width: 500px;
+    height: 18vh;
+    font-size: 9pt;
   }
 
   .botao {
@@ -223,6 +239,19 @@ button.botao:hover {
   #customers {
     min-width: 400px;
     max-width: 600px;
+  }
+
+  #customers th {
+    font-size: 17px;
+  }
+
+  #customers td,
+  #erroMsg {
+    font-size: 13px;
+  }
+
+  #assets {
+    gap: 60px
   }
 }
 
@@ -237,6 +266,8 @@ button.botao:hover {
 
   #textSql {
     width: 400px;
+    height: 15vh;
+    font-size: 8pt;
   }
 
   .botao {
@@ -247,6 +278,19 @@ button.botao:hover {
   #customers {
     min-width: 300px;
     max-width: 500px;
+  }
+
+  #customers th {
+    font-size: 15px;
+  }
+
+  #customers td,
+  #erroMsg {
+    font-size: 12px;
+  }
+
+  #assets {
+    gap: 50px
   }
 }
 
@@ -314,5 +358,91 @@ button.botao:hover {
   #customers {
     min-width: 200px;
     max-width: 250px;
+  }
+
+  #customers th {
+    font-size: 13px;
+  }
+
+  #customers td,
+  #erroMsg {
+    font-size: 11px;
+  }
+
+  #assets {
+    gap: 40px
+  }
+}
+
+@media screen and (max-width: 325px) {
+  #menu {
+    height: 35px;
+  }
+
+  #dark-mode {
+    font-size: 18px;
+    left: 90%;
+  }
+
+  #head {
+    font-size: 4pt;
+  }
+
+  #textSql {
+    width: 200px;
+    height: 10vh;
+    font-size: 5pt;
+  }
+
+  .botao {
+    font-size: 4pt;
+  }
+
+  #erroMsg,
+  #customers {
+    min-width: 100px;
+  }
+
+  #customers th {
+    font-size: 11px;
+  }
+
+  #customers td,
+  #erroMsg {
+    font-size: 9px;
+  }
+
+  #assets {
+    gap: 30px
+  }
+}
+
+@media (orientation: landscape) {
+  #menu {
+    height: 30px;
+  }
+
+  #dark-mode {
+    font-size: 1.5em;
+    top: 4px;
+  }
+
+  #head {
+    font-size: 8pt;
+    margin-top: 10px;
+  }
+
+  #textsql {
+    height: 10vh;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .botao {
+    font-size: 7pt;
+  }
+
+  img {
+    height: 45px;
+    width: 45px;
   }
 }
