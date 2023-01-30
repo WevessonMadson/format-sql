@@ -417,7 +417,7 @@ button.botao:hover {
   }
 }
 
-@media (orientation: landscape) {
+@media (orientation: landscape) and (min-width:500px) and (max-width: 659px) {
   #menu {
     height: 30px;
   }
