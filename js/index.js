@@ -18,10 +18,9 @@ function getValues(sql) {
     try {
         const strSqlNotKeys = sql.slice(sql.indexOf("(") + 1);
         const initialIndex = strSqlNotKeys.indexOf("(") + 1;
-        const finalIndex = sql.lastIndexOf(")");
+        const finalIndex = strSqlNotKeys.lastIndexOf(")");
 
-        const values = sql.substring(initialIndex, finalIndex).split(",").map(element => element.trim().replace(/[",',]/g, ""));
-
+        const values = strSqlNotKeys.substring(initialIndex, finalIndex).split(",").map(element => element.trim().replace(/[",',]/g, ""));
         return values;
 
     } catch (error) {
