@@ -130,11 +130,11 @@ function darkMode(e) {
 }
 
 function reloadDarkMode() {
-    let dark = localStorage.getItem("dark") || "dark_mode";
+    let dark = localStorage.getItem("dark") || "light_mode";
 
     document.querySelector("#dark-mode").innerText = dark;
 
-    if (dark == "light_mode") {
+    if (dark == "dark_mode") {
         document.querySelector("html").classList.toggle("dark-mode");
     }
 }

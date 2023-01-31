@@ -5,14 +5,14 @@
   --primary-color: rgb(47, 73, 122);
   --secundary-color: #9dcacc;
   --tr-bg-color-odd: #b4e7ea;
-  --tr-bg-color-even: #b9ede9;
+  --tr-bg-color-even: #9ff4ed;
   --tr-bg-color-hover: rgb(246, 242, 242);
-  --dark-bg-color: rgb(19, 19, 19);
+  --dark-bg-color: #eef4f4;
 }
 
 .dark-mode:root {
   --body-bg-color: rgb(33, 32, 32);
-  --dark-bg-color: #eef4f4;
+  --dark-bg-color: rgb(19, 19, 19);
 }
 
 * {
@@ -106,6 +106,11 @@ button.botao:hover {
   gap: 100px;
 }
 
+#assets img {
+  height: 100px;
+  width: 100px;
+}
+
 #result {
   display: none;
   padding-bottom: 20px;
@@ -127,7 +132,7 @@ button.botao:hover {
 #customers th {
   background-color: var(--primary-color);
   color: white;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 #customers td {
@@ -159,9 +164,8 @@ button.botao:hover {
   align-items: center;
   gap: 30px;
   background-color: rgba(200, 143, 143, 0.737);
-  font-size: 15pt;
+  font-size: 18px;
   text-align: center;
-  width: fit-content;
 }
 
 #erroMsg span {
@@ -187,6 +191,15 @@ button.botao:hover {
   #textSql {
     width: 600px;
     height: 20vh;
+  }
+
+  .botao {
+    font-size: 15px;
+  }
+
+  #assets img {
+    height: 90px;
+    width: 90px;
   }
 
   #erroMsg,
@@ -251,7 +264,12 @@ button.botao:hover {
   }
 
   #assets {
-    gap: 60px
+    gap: 60px;
+  }
+
+  #assets img {
+    height: 60px;
+    width: 60px;
   }
 }
 
@@ -314,11 +332,6 @@ button.botao:hover {
 
   .botao {
     font-size: 7pt;
-  }
-
-  img {
-    width: 60px;
-    height: 60px;
   }
 
   #erroMsg,
@@ -416,35 +429,3 @@ button.botao:hover {
     gap: 30px
   }
 }
-
-/* 
-@media (orientation: landscape) and (min-width:500px) and (max-width: 659px) {
-  #menu {
-    height: 30px;
-  }
-
-  #dark-mode {
-    font-size: 1.5em;
-    top: 4px;
-  }
-
-  #head {
-    font-size: 8pt;
-    margin-top: 10px;
-  }
-
-  #textsql {
-    height: 10vh;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  .botao {
-    font-size: 7pt;
-  }
-
-  img {
-    height: 45px;
-    width: 45px;
-  }
-}
-*/
