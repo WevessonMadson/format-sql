@@ -16,7 +16,8 @@ function getKeys(sql) {
 
 function getValues(sql) {
     try {
-        const initialIndex = sql.lastIndexOf("(") + 1;
+        const strSqlNotKeys = sql.slice(sql.indexOf("(") + 1);
+        const initialIndex = strSqlNotKeys.indexOf("(") + 1;
         const finalIndex = sql.lastIndexOf(")");
 
         const values = sql.substring(initialIndex, finalIndex).split(",").map(element => element.trim().replace(/[",',]/g, ""));
