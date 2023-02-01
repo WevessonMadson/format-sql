@@ -132,11 +132,12 @@ button.botao:hover {
 #customers th {
   background-color: var(--primary-color);
   color: white;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 #customers td {
   word-break: break-all;
+  font-size: 14.5px;
 }
 
 #customers td:nth-child(even) {
@@ -206,10 +207,6 @@ button.botao:hover {
   #customers {
     min-width: 600px;
     max-width: 800px;
-  }
-
-  #customers th {
-    font-size: 20px;
   }
 
   #customers td,
