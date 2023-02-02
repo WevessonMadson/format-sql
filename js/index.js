@@ -1,3 +1,5 @@
+/*--- Funções de tratamentos do Sql ---*/
+
 function getFields(sql) {
     try {
         const initialIndex = sql.indexOf("(") + 1;
@@ -71,12 +73,15 @@ function getFormatSql(sql) {
     }
 }
 
+
+/*--- Funções de renderização da tabela ---*/
+
 function renderTable(dataTables) {
     return `
     <div id='busca'>
-        <input type='text' placeholder='filtrar campo' id='pesquisar'>
-        <button id='buscar' onclick='searchFields()' title='filtrar'><span class="material-icons">search</span></button>
-        <button id='limpar' onclick='clearFields()' title='limpar filtro'><span class="material-icons">clear</span></button>
+        <input type='text' placeholder='filtrar campo' id='pesquisar' oninput='searchFields()'>
+        <button id='buscar' title='filtrar' onclick='searchFields()'><span class="material-icons">search</span></button>
+        <button id='limpar' title='limpar filtro' onclick='clearFilter()'><span class="material-icons">clear</span></button>
     </div>    
     <table id='customers'>
         <thead>
@@ -112,6 +117,7 @@ function renderReturn(e) {
         return;
     } else {
         localStorage.setItem("objectTable", JSON.stringify(objectFormated));
+        localStorage.setItem("lastSql", sql.value);
 
         let dataTable = "";
 
@@ -122,6 +128,8 @@ function renderReturn(e) {
         result.innerHTML = renderTable(dataTable);
     }
 }
+
+/*--- Funções de Dark-Mode ---*/
 
 function darkMode(e) {
     e.preventDefault();
@@ -150,34 +158,36 @@ function reloadDarkMode() {
     }
 }
 
-document.getElementById("gerar").addEventListener("click", renderReturn);
-document.getElementById("dark-mode").addEventListener("click", darkMode);
-window.addEventListener("DOMContentLoaded", reloadDarkMode);
+/*--- Funções dos filtros ---*/
 
 function searchFields() {
     const objectFormated = JSON.parse(localStorage.getItem("objectTable"));
 
-    const search = document.getElementById("pesquisar").value.toLocaleLowerCase();
+    let search = document.getElementById("pesquisar").value;
 
     let dataTable = "";
 
     if (search != null) {
-        for (key in objectFormated) {
-            let field = key.toLocaleLowerCase().indexOf(search);
-            if (field != -1) {
-                dataTable += `<tr><td>${key}</td><td>${objectFormated[key]}</td></tr>`;
+        if (search.length > 1) {
+            for (key in objectFormated) {
+                let field = key.toLocaleLowerCase().indexOf(search.toLocaleLowerCase());
+                if (field != -1) {
+                    dataTable += `<tr><td>${key}</td><td>${objectFormated[key]}</td></tr>`;
+                }
             }
+
+            result.innerHTML = renderTable(dataTable);
+
+            document.getElementById("pesquisar").value = search;
+        } else if (search == "") {
+            clearFilter();
         }
         
-        if (dataTable == "") {
-            alert("Nenhum campo foi encontrado com esse parâmetro.")
-        } else {
-            result.innerHTML = renderTable(dataTable);
-        }
+        document.getElementById("pesquisar").focus();
     }
 }
 
-function clearFields() {
+function clearFilter() {
     const objectFormated = JSON.parse(localStorage.getItem("objectTable"));
 
     dataTable = "";
@@ -188,3 +198,24 @@ function clearFields() {
 
     result.innerHTML = renderTable(dataTable);
 }
+
+/*--- Função de resgate do sql ---*/
+
+function getLastInsert(e) {
+    e.preventDefault();
+
+    const lastSql = localStorage.getItem("lastSql");
+
+    if (lastSql) {
+        if (confirm("Clique OK para usar o último SQL.")) {
+            document.getElementById("textSql").value = lastSql;
+        }
+    }
+}
+
+
+window.addEventListener("DOMContentLoaded", reloadDarkMode);
+document.getElementById("gerar").addEventListener("click", renderReturn);
+document.getElementById("dark-mode").addEventListener("click", darkMode);
+document.getElementById("textSql").addEventListener("dblclick", getLastInsert);
+
