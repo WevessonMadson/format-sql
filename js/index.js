@@ -12,7 +12,7 @@ function getFields(sql) {
     } catch (error) {
         console.log(error);
 
-        return "Ocorreu um erro inesperado, verifique no console.";
+        return "Ocorreu um erro inesperado, verifique os valores passados.";
     }
 }
 
@@ -28,7 +28,7 @@ function getValues(sql) {
     } catch (error) {
         console.log(error);
 
-        return "Ocorreu um erro inesperado, verifique no console.";
+        return "Ocorreu um erro inesperado, verifique os valores passados.";
     }
 }
 
@@ -45,7 +45,7 @@ function getObjectSql(fields, values) {
     } catch (error) {
         console.log(error);
 
-        return "Ocorreu um erro inesperado, verifique no console.";
+        return "Ocorreu um erro inesperado, verifique os valores passados.";
     }
 }
 
@@ -69,7 +69,7 @@ function getFormatSql(sql) {
     } catch (error) {
         console.log(error);
 
-        return "Ocorreu um erro inesperado, verifique no console.";
+        return "Ocorreu um erro inesperado, verifique os valores passados.";
     }
 }
 
@@ -80,7 +80,6 @@ function renderTable(dataTables) {
     return `
     <div id='busca'>
         <input type='text' placeholder='filtrar campo' id='pesquisar' oninput='searchFields()'>
-        <button id='buscar' title='filtrar' onclick='searchFields()'><span class="material-icons">search</span></button>
         <button id='limpar' title='limpar filtro' onclick='clearFilter()'><span class="material-icons">clear</span></button>
     </div>    
     <table id='customers'>
@@ -126,6 +125,8 @@ function renderReturn(e) {
         }
 
         result.innerHTML = renderTable(dataTable);
+
+        document.getElementById("result").firstElementChild.scrollIntoView();
     }
 }
 
@@ -183,6 +184,7 @@ function searchFields() {
             clearFilter();
         }
         
+        document.getElementById("result").firstElementChild.scrollIntoView();
         document.getElementById("pesquisar").focus();
     }
 }
@@ -197,6 +199,7 @@ function clearFilter() {
     }
 
     result.innerHTML = renderTable(dataTable);
+    document.getElementById("result").firstElementChild.scrollIntoView();
 }
 
 /*--- Função de resgate do sql ---*/

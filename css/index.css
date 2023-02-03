@@ -8,6 +8,7 @@
   --tr-bg-color-even: #9ff4ed;
   --tr-bg-color-hover: rgb(246, 242, 242);
   --dark-bg-color: #eef4f4;
+  font-size: 62.5%; /*1rem = 10px*/
 }
 
 .dark-mode:root {
@@ -16,8 +17,8 @@
 }
 
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif, 'cursive';
   font-weight: 800;
@@ -27,38 +28,26 @@
 body {
   background-color: var(--body-bg-color);
   transition: 0.2s;
+  font-size: 1.6rem;
 }
 
 #menu {
   background-color: var(--primary-color);
-  height: 60px;
+  height: 5rem;
 }
 
 #dark-mode {
-  color: none;
-  border-radius: 40px;
+  color: var(--primary-color);
+  border-radius: 50%;
   background-color: var(--dark-bg-color);
-  font-size: 2.5em;
+  font-size: 4rem;
   position: absolute;
-  top: 10px;
+  top: 0.5rem;
   left: 95%;
-  background-color: none;
 }
 
 #dark-mode:hover {
   cursor: pointer;
-}
-
-#head {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-  font-size: 20pt;
-  text-align: center;
-  color: var(--primary-color);
-  transition: color 0.2s;
 }
 
 #corpo {
@@ -67,70 +56,91 @@ body {
   align-items: center;
 }
 
+#head {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 2.4rem;
+  text-align: center;
+  color: var(--primary-color);
+  transition: color 0.2s;
+}
+
 #textSql {
-  padding: 7px;
-  margin-top: 25px;
-  margin-bottom: 20px;
+  padding: 0.7rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
   background-color: #ffffff;
-  border: 2.5px solid var(--secundary-color);
-  width: 700px;
-  height: 25vh;
+  border: 0.2rem solid var(--secundary-color);
+  width: 70rem;
+  height: 15vh;
   font-weight: 500;
+  font-size: 1.33rem;
+}
+
+#textSql:focus{
+  outline: var(--secundary-color);
 }
 
 div#botao {
-  margin-bottom: 20px;
+  margin-bottom: 3rem;
   display: flex;
   justify-content: center;
 }
 
 .botao {
   border: none;
-  padding: 5px;
-  font-size: 13pt;
+  padding: 0.5rem;
+  font-size: 1.8rem;
   background-color: var(--secundary-color);
   font-weight: bold;
-  border-radius: 15px;
-  transition: padding 0.2s;
+  border-radius: 1.5rem;
+  transition: padding 0.15s;
   width: fit-content;
 }
 
 button.botao:hover {
   cursor: pointer;
-  padding: 7px;
+  padding: 0.7rem;
 }
 
 #assets {
   display: flex;
   align-content: center;
-  gap: 100px;
+  gap: 9rem;
 }
 
 #assets img {
-  height: 100px;
-  width: 100px;
+  height: 10rem;
+  width: 10rem;
 }
 
 #result {
   display: none;
-  padding-bottom: 20px;
-  margin-top: 20px;
+  padding-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 #busca {
   display: flex;
   justify-content: center;
-  margin-bottom: 15px;
-  margin-top: 10px;
-  gap: 10px;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  gap: 0.8rem;
 }
 
 #busca input, button {
-  border: 2px solid var(--secundary-color);
+  border: 0.2rem solid var(--secundary-color);
+}
+
+#busca input:focus{
+  outline: var(--secundary-color);
 }
 
 #busca input {
-  padding-left: 10px;
+  padding-left: 1rem;
 }
 
 #busca button:hover {
@@ -138,26 +148,29 @@ button.botao:hover {
 }
 
 #customers {
-  border-spacing: 5px 0.9997px;
+  border-spacing: 0.5rem 0.099rem;
   table-layout: fixed;
+  min-width: 50rem;
+  max-width: 90rem;
 }
 
 #customers td,
 #customers th {
-  padding: 8px;
-  border: 3px solid var(--primary-color);
+  padding: 0.6rem;
+  border: 0.3rem solid var(--primary-color);
   text-align: center;
+  width: 50%;
 }
 
 #customers th {
   background-color: var(--primary-color);
   color: white;
-  font-size: 20px;
+  font-size: 2rem;
 }
 
 #customers td {
   word-break: break-all;
-  font-size: 14.5px;
+  font-size: 1.5rem;
 }
 
 #customers td:nth-child(even) {
@@ -177,281 +190,181 @@ button.botao:hover {
 }
 
 #erroMsg {
-  margin-top: 20px;
-  padding: 25px;
-  border-radius: 30px;
+  margin-top: 2rem;
+  padding: 2.5rem;
+  border-radius: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 3rem;
   background-color: rgba(200, 143, 143, 0.737);
-  font-size: 18px;
+  font-size: 1.5rem;
   text-align: center;
+  min-width: 50rem;
+  max-width: 60rem;
 }
 
 #erroMsg span {
   color: rgb(222, 219, 21);
-  font-size: 40pt;
+  font-size: 5rem;
 }
 
-#customers,
-#erroMsg {
-  min-width: 700px;
-  max-width: 900px;
+@media screen and (max-width: 1366px) {
+  :root {
+    font-size: 60%;
+  }
 }
 
-@media screen and (max-width: 1060px) {
+@media screen and (max-width: 903px) {
+  #menu {
+    height: 3.5rem;
+  }
+
   #dark-mode {
-    left: 94%;
-  }
-
-  #head {
-    font-size: 14pt;
-  }
-
-  #textSql {
-    width: 600px;
-    height: 20vh;
-  }
-
-  .botao {
-    font-size: 15px;
-  }
-
-  #assets img {
-    height: 90px;
-    width: 90px;
-  }
-
-  #erroMsg,
-  #customers {
-    min-width: 600px;
-    max-width: 800px;
-  }
-
-  #customers td,
-  #erroMsg {
-    font-size: 14px;
-  }
-
-  #assets {
-    gap: 80px
-  }
-} 
-
-@media screen and (max-width: 895px) {
-  #dark-mode {
+    font-size: 2.7rem;
     left: 93%;
+    top: 0.3rem;
   }
 
-  #erroMsg,
-  #customers {
-    max-width: 700px;
-  }
-}
-
-@media screen and (max-width: 743px) {
   #head {
-    font-size: 12pt;
+    font-size: 2rem;
   }
 
   #textSql {
-    width: 500px;
-    height: 18vh;
-    font-size: 9pt;
+    width: 50rem;
   }
 
   .botao {
-    font-size: 10pt;
-  }
-
-  #erroMsg,
-  #customers {
-    min-width: 400px;
-    max-width: 600px;
-  }
-
-  #customers th {
-    font-size: 17px;
-  }
-
-  #customers td,
-  #erroMsg {
-    font-size: 13px;
+    font-size: 1.7rem;
   }
 
   #assets {
-    gap: 60px;
+    gap: 7rem;
   }
 
   #assets img {
-    height: 60px;
-    width: 60px;
+    height: 8rem;
+    width: 8rem;
+  }
+
+  #customers {
+    min-width: 50rem;
+    max-width: 80rem;
   }
 }
 
-@media screen and (max-width: 633px) {
-  #dark-mode {
-    left: 92%;
+@media screen and (max-width: 760px) {
+  #menu {
+    height: 3.3rem;
   }
 
   #head {
-    font-size: 10pt;
+    font-size: 1.5rem;
   }
 
   #textSql {
-    width: 400px;
-    height: 15vh;
-    font-size: 8pt;
+    width: 45rem;
   }
 
   .botao {
-    font-size: 8pt;
+    font-size: 1.5rem;
   }
 
-  #erroMsg,
   #customers {
-    min-width: 300px;
-    max-width: 500px;
+    min-width: 50rem;
+    max-width: 60rem;
+  }
+}
+
+@media screen and (max-width: 634px) {
+  .botao {
+    font-size: 1.4rem;
   }
 
-  #customers th {
-    font-size: 15px;
+  #customers {
+    max-width: 50rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #menu {
+    height: 3.3rem;
   }
 
-  #customers td,
-  #erroMsg {
-    font-size: 12px;
+  #dark-mode {
+    font-size: 2.5rem;
+    left: 90%;
+    top: 0.3rem;
+  }
+
+  #head {
+    font-size: 1.1rem;
+  }
+
+  #head p {
+    font-size: 1.4rem;
+  }
+
+  #textSql {
+    width: 35rem;
+    height: 10vh;
+  }
+
+  .botao {
+    font-size: 1.5rem;
   }
 
   #assets {
-    gap: 50px
-  }
-}
-
-@media screen and (max-width: 530px) {
-  #menu {
-    height: 50px;
+    gap: 6rem;
   }
 
-  #dark-mode {
-    font-size: 30px;
-  }
-
-  #head {
-    font-size: 9pt;
-  }
-
-  #textSql {
-    width: 300px;
-    font-size: 8pt;
-  }
-
-  .botao {
-    font-size: 7pt;
+  #assets img {
+    height: 8rem;
+    width: 8rem;
   }
 
   #erroMsg,
   #customers {
-    max-width: 400px;
+    min-width: 30rem;
+    max-width: 40rem;
   }
 }
 
-@media screen and (max-width: 479px) {
-  #menu {
-    height: 40px;
-  }
-
-  #dark-mode {
-    font-size: 22px;
-  }
-
+@media screen and (max-width: 424px) {
   #head {
-    font-size: 6pt;
+    font-size: 0.7rem;
+  }
+
+  #head p {
+    font-size: 0.9rem;
   }
 
   #textSql {
-    width: 250px;
-    font-size: 7pt;
+    width: 25rem;
+    font-size: 1.1rem;
   }
 
   .botao {
-    font-size: 6pt;
-  }
-
-  img {
-    width: 50px;
-    height: 50px;
-  }
-
-  #erroMsg,
-  #customers {
-    min-width: 200px;
-    max-width: 250px;
-  }
-
-  #customers th {
-    font-size: 13px;
-  }
-
-  #customers td,
-  #erroMsg {
-    font-size: 11px;
+    font-size: 1.2rem;
   }
 
   #assets {
-    gap: 40px
+    gap: 4rem;
   }
 
-  #busca input, button {
-    border: 1px solid var(--secundary-color);
+  #assets img {
+    height: 6rem;
+    width: 6rem;
   }
 
   #busca input {
-    font-size: 11px;
-    width: 100px;
-  }
-}
-
-@media screen and (max-width: 325px) {
-  #menu {
-    height: 35px;
-  }
-
-  #dark-mode {
-    font-size: 18px;
-    left: 90%;
-  }
-
-  #head {
-    font-size: 4pt;
-  }
-
-  #textSql {
-    width: 200px;
-    height: 10vh;
-    font-size: 5pt;
-  }
-
-  .botao {
-    font-size: 4pt;
+    width: 11rem;
+    font-size: 1.3rem;
   }
 
   #erroMsg,
   #customers {
-    min-width: 100px;
-  }
-
-  #customers th {
-    font-size: 11px;
-  }
-
-  #customers td,
-  #erroMsg {
-    font-size: 9px;
-  }
-
-  #assets {
-    gap: 30px
+    min-width: 20rem;
+    max-width: 30rem;
   }
 }
