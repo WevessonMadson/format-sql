@@ -104,7 +104,6 @@ function renderReturn(e) {
     const objectFormated = getFormatSql(sql.value);
 
     result.style.display = "block";
-    sql.style.height = "15vh";
 
     if (typeof objectFormated == "string") {
         result.innerHTML = `
