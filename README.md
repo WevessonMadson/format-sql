@@ -1,7 +1,6 @@
 # FORMAT SQL 
 
-<img src="./assets/prewiew.png" alt="Imagem principal do projeto para desktops." />
-<img src="./assets/prewiew_mobile.png" alt="Imagem principal do projeto em mobile." />
+<img src="./assets/format-sql.gif" alt="Gif animado com o funcionamento do aplicativo" />
 
 Projeto construído para ajudar no dia a dia com os inserts de sql.
 
