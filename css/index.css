@@ -189,6 +189,11 @@ button.botao:hover {
   background-color: var(--tr-bg-color-hover);
 }
 
+.inputValue {
+  border: none;
+  background-color: transparent;
+}
+
 #erroMsg {
   margin-top: 2rem;
   padding: 2.5rem;

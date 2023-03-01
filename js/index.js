@@ -120,7 +120,7 @@ function renderReturn(e) {
         let dataTable = "";
 
         for (key in objectFormated) {
-            dataTable += `<tr><td>${key}</td><td>${objectFormated[key]}</td></tr>`;
+            dataTable += `<tr><td>${key}</td><td><input class='inputValue' type='text' value='${objectFormated[key]}'></td></tr>`;
         }
 
         result.innerHTML = renderTable(dataTable);
@@ -172,7 +172,7 @@ function searchFields() {
             for (key in objectFormated) {
                 let field = key.toLocaleLowerCase().indexOf(search.toLocaleLowerCase());
                 if (field != -1) {
-                    dataTable += `<tr><td>${key}</td><td>${objectFormated[key]}</td></tr>`;
+                    dataTable += `<tr><td>${key}</td><td><input class='inputValue' type='text' value='${objectFormated[key]}'></td></tr>`;
                 }
             }
 
@@ -194,7 +194,7 @@ function clearFilter() {
     dataTable = "";
 
     for (key in objectFormated) {
-        dataTable += `<tr><td>${key}</td><td>${objectFormated[key]}</td></tr>`;
+        dataTable += `<tr><td>${key}</td><td><input class='inputValue' type='text' value='${objectFormated[key]}'></td></tr>`;
     }
 
     result.innerHTML = renderTable(dataTable);
