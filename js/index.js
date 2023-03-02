@@ -80,7 +80,8 @@ function renderTable(dataTables) {
     return `
     <div id='busca'>
         <input type='text' placeholder='filtrar campo' id='pesquisar' oninput='searchFields()'>
-        <button id='limpar' title='limpar filtro' onclick='clearFilter()'><span class="material-icons">clear</span></button>
+        <button id='limpar' title='Limpar Filtro' onclick='clearFilter()'><span class="material-icons">clear</span></button>
+        <button id='gerarNewInsert' title='Gerar Novo Insert' onclick='getNewInsert()'><span class="material-icons">content_copy</span></button>
     </div>    
     <table id='customers'>
         <thead>
@@ -93,6 +94,10 @@ function renderTable(dataTables) {
             ${dataTables}
         </tbody>
     </table>`;
+}
+
+function createTrTable(key, value) {
+    return `<tr class='trTableValue'><td class='key'>${key}</td><td class='value'><input class='inputValue' type='text' value='${value}'></td></tr>`
 }
 
 function renderReturn(e) {
@@ -120,7 +125,7 @@ function renderReturn(e) {
         let dataTable = "";
 
         for (key in objectFormated) {
-            dataTable += `<tr><td>${key}</td><td><input class='inputValue' type='text' value='${objectFormated[key]}'></td></tr>`;
+            dataTable += createTrTable(key, objectFormated[key]);
         }
 
         result.innerHTML = renderTable(dataTable);
@@ -172,7 +177,7 @@ function searchFields() {
             for (key in objectFormated) {
                 let field = key.toLocaleLowerCase().indexOf(search.toLocaleLowerCase());
                 if (field != -1) {
-                    dataTable += `<tr><td>${key}</td><td><input class='inputValue' type='text' value='${objectFormated[key]}'></td></tr>`;
+                    dataTable += createTrTable(key, objectFormated[key]);
                 }
             }
 
@@ -182,7 +187,7 @@ function searchFields() {
         } else if (search == "") {
             clearFilter();
         }
-        
+
         document.getElementById("result").firstElementChild.scrollIntoView();
         document.getElementById("pesquisar").focus();
     }
@@ -194,7 +199,7 @@ function clearFilter() {
     dataTable = "";
 
     for (key in objectFormated) {
-        dataTable += `<tr><td>${key}</td><td><input class='inputValue' type='text' value='${objectFormated[key]}'></td></tr>`;
+        dataTable += createTrTable(key, objectFormated[key]);
     }
 
     result.innerHTML = renderTable(dataTable);
@@ -215,9 +220,46 @@ function getLastInsert(e) {
     }
 }
 
+/* -- Função para gerar novo insert -- */
+
+function getNewInsert() {
+    const trs = document.getElementsByClassName('trTableValue');
+
+    const objectForNewInsert = JSON.parse(localStorage.getItem("objectTable"));
+    const sqlForNewInsert = localStorage.getItem("lastSql");
+
+    for (let i = 0; i < trs.length; i++) {
+        let key = trs[i].getElementsByClassName('key')[0].innerText;
+        let value = trs[i].getElementsByClassName('value')[0].getElementsByClassName('inputValue')[0].value;
+
+        objectForNewInsert[key] = value;
+    }
+
+    let newInsert = sqlForNewInsert.substring(0, sqlForNewInsert.indexOf('(') - 1);
+    let preFields = '(';
+    let preValues = '(';
+
+    for (key in objectForNewInsert) {
+        preFields += `${key}, `;
+        if (objectForNewInsert[key] == 'null') {
+            preValues += `${objectForNewInsert[key]}, `;
+        } else {
+            preValues += `'${objectForNewInsert[key]}', `;
+        }
+    }
+
+    let newFields = `${preFields.substring(0, preFields.length - 2)})`;
+    let newValues = `${preValues.substring(0, preValues.length - 2)});`;
+    newInsert += ` ${newFields} \nvalues ${newValues}`;
+
+    navigator.clipboard.writeText(newInsert);
+
+    alert("Novo Insert Copiado para a Area de Transferência.");
+}
+
+/* -- eventos de disparos -- */
 
 window.addEventListener("DOMContentLoaded", reloadDarkMode);
 document.getElementById("gerar").addEventListener("click", renderReturn);
 document.getElementById("dark-mode").addEventListener("click", darkMode);
 document.getElementById("textSql").addEventListener("dblclick", getLastInsert);
-
