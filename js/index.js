@@ -222,7 +222,7 @@ function getLastInsert(e) {
 
 /* -- Função para gerar novo insert -- */
 
-function getNewInsert() {
+async function getNewInsert() {
     const trs = document.getElementsByClassName('trTableValue');
 
     const objectForNewInsert = JSON.parse(localStorage.getItem("objectTable"));
@@ -252,7 +252,7 @@ function getNewInsert() {
     let newValues = `${preValues.substring(0, preValues.length - 2)});`;
     newInsert += ` ${newFields} \nvalues ${newValues}`;
 
-    navigator.clipboard.writeText(newInsert);
+    await navigator.clipboard.writeText(newInsert);
 
     alert("Novo Insert Copiado para a Area de Transferência.");
 }
