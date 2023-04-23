@@ -8,7 +8,8 @@
   --tr-bg-color-even: #9ff4ed;
   --tr-bg-color-hover: rgb(246, 242, 242);
   --dark-bg-color: #eef4f4;
-  font-size: 62.5%; /*1rem = 10px*/
+  font-size: 62.5%;
+  /*1rem = 10px*/
 }
 
 .dark-mode:root {
@@ -80,7 +81,7 @@ body {
   font-size: 1.33rem;
 }
 
-#textSql:focus{
+#textSql:focus {
   outline: var(--secundary-color);
 }
 
@@ -131,11 +132,12 @@ button.botao:hover {
   gap: 0.8rem;
 }
 
-#busca input, button {
+#busca input,
+button {
   border: 0.2rem solid var(--secundary-color);
 }
 
-#busca input:focus{
+#busca input:focus {
   outline: var(--secundary-color);
 }
 
@@ -212,6 +214,27 @@ button.botao:hover {
 #erroMsg span {
   color: rgb(222, 219, 21);
   font-size: 5rem;
+}
+
+footer {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+#redes {
+  display: flex;
+  gap: 10px;
+}
+
+#redes img {
+  width: 40px;
+}
+
+#redes p {
+  font-size: 14px;
 }
 
 @media screen and (max-width: 1366px) {
