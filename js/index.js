@@ -241,7 +241,7 @@ async function getNewInsert() {
 
     for (key in objectForNewInsert) {
         preFields += `${key}, `;
-        if (objectForNewInsert[key].toLocaleString() == 'null') {
+        if (objectForNewInsert[key].toLocaleLowerCase() == 'null') {
             preValues += `${objectForNewInsert[key]}, `;
         } else {
             preValues += `'${objectForNewInsert[key]}', `;
