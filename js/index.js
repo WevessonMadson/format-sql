@@ -78,13 +78,16 @@ function getFormatSql(sql, marked = true) {
 function renderCheckBox() {
     const expande = document.getElementById("expande").textContent === "expand_more" ? true : false;
     const listOfCheckBox = document.getElementsByClassName("checkBox");
+
     if (expande) {
         for (let i = 0; i < listOfCheckBox.length; i++) {
             listOfCheckBox[i].innerHTML = `<span></span>`;
+            document.getElementById("markedAll").innerHTML = `<span></span>`;
         }
     } else {
         for (let i = 0; i < listOfCheckBox.length; i++) {
             listOfCheckBox[i].innerHTML = `<input type='checkbox' onchange='updateMarked()' class='marked' />`;
+            document.getElementById("markedAll").innerHTML = `<input id='markAll' type='checkbox' onclick='markAll()'/>`;
         }
     }
 
@@ -120,6 +123,22 @@ function updateMarked() {
     localStorage.setItem("objectTable", JSON.stringify(objectTable));
 }
 
+function markAll() {
+    const trs = document.getElementsByClassName('trTableValue');
+    const markedAll = document.getElementById("markAll");
+    if (markedAll.checked) {
+        for (let i = 0; i < trs.length; i++) {
+            trs[i].getElementsByClassName('checkBox')[0].getElementsByClassName('marked')[0].checked = true;
+        }
+    } else {
+        for (let i = 0; i < trs.length; i++) {
+            trs[i].getElementsByClassName('checkBox')[0].getElementsByClassName('marked')[0].checked = false;
+        }
+    }
+
+    updateMarked();
+}
+
 function renderTable(dataTables) {
     return `
     <div id='busca'>
@@ -130,7 +149,7 @@ function renderTable(dataTables) {
     <table id='customers'>
         <thead>
             <tr>
-                <th class='no-style-table'><span class='material-icons' id='expande' onclick='expandeOrNot()'>expand_more</span></th>
+                <th class='no-style-table'><div id='expandeMarked'><span id ='markedAll'><span></span></span><span class='material-icons' id='expande' onclick='expandeOrNot()'>expand_more</span></div></th>
                 <th>CAMPO</th>
                 <th>VALOR</th>
             </tr>

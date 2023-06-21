@@ -200,6 +200,11 @@ button {
   width: 15px;
 }
 
+#customers tr th.no-style-table #expandeMarked {
+  display: flex;
+  flex-direction: row;
+}
+
 .inputValue {
   border: none;
   background-color: transparent;
