@@ -301,6 +301,10 @@ async function getNewInsert() {
 
     let newFields = `${preFields.substring(0, preFields.length - 2)})`;
     let newValues = `${preValues.substring(0, preValues.length - 2)});`;
+    if (preFields === "(") {
+        alert("Marque as linhas que deseja acrescentar ao insert ou esconda-os para gerar com todos os campos.");
+        return;
+    }
     newInsert += ` ${newFields} \nvalues ${newValues}`;
 
     await navigator.clipboard.writeText(newInsert);
