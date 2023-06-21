@@ -84,7 +84,7 @@ function renderCheckBox() {
         }
     } else {
         for (let i = 0; i < listOfCheckBox.length; i++) {
-            listOfCheckBox[i].innerHTML = `<input type='checkbox' onchange='checkMarked()' />`;
+            listOfCheckBox[i].innerHTML = `<input type='checkbox' onchange='updateMarked()' class='marked' />`;
         }
     }
 
@@ -107,8 +107,17 @@ function expandeOrNot() {
     renderCheckBox();
 }
 
-function checkMarked(e) {
-    console.log(e.target)
+function updateMarked() {
+    const trs = document.getElementsByClassName('trTableValue');
+    const objectTable = JSON.parse(localStorage.getItem("objectTable"));
+
+    for (let i = 0; i < trs.length; i++) {
+        let key = trs[i].getElementsByClassName('key')[0].innerText;
+        let marked = trs[i].getElementsByClassName('checkBox')[0].getElementsByClassName('marked')[0].checked;
+        objectTable[key].marked = marked;
+    }
+
+    localStorage.setItem("objectTable", JSON.stringify(objectTable));
 }
 
 function renderTable(dataTables) {
