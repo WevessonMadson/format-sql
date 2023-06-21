@@ -32,12 +32,12 @@ function getValues(sql) {
     }
 }
 
-function getObjectSql(fields, values) {
+function getObjectSql(fields, values, marked) {
     try {
         let objectData = {};
 
         for (let i = 0; i < fields.length; i++) {
-            objectData[fields[i]] = values[i];
+            objectData[fields[i]] = { value: values[i], marked: marked };
         }
 
         return objectData;
@@ -49,7 +49,7 @@ function getObjectSql(fields, values) {
     }
 }
 
-function getFormatSql(sql) {
+function getFormatSql(sql, marked = true) {
     try {
         let sqlFormated = sql.toLocaleLowerCase();
 
@@ -62,7 +62,7 @@ function getFormatSql(sql) {
             if (fields.length != values.length) {
                 return `A quantidade de campos é diferente da quantidade de valores, verifique.`;
             } else {
-                return getObjectSql(fields, values);
+                return getObjectSql(fields, values, marked);
             }
         }
 
@@ -75,6 +75,41 @@ function getFormatSql(sql) {
 
 
 /*--- Funções de renderização da tabela ---*/
+function renderCheckBox() {
+    const expande = document.getElementById("expande").textContent === "expand_more" ? true : false;
+    const listOfCheckBox = document.getElementsByClassName("checkBox");
+    if (expande) {
+        for (let i = 0; i < listOfCheckBox.length; i++) {
+            listOfCheckBox[i].innerHTML = `<span></span>`;
+        }
+    } else {
+        for (let i = 0; i < listOfCheckBox.length; i++) {
+            listOfCheckBox[i].innerHTML = `<input type='checkbox' onchange='checkMarked()' />`;
+        }
+    }
+
+}
+
+function expandeOrNot() {
+    const expande = document.getElementById("expande").textContent === "expand_more" ? true : false;
+    const lastSql = localStorage.getItem("lastSql");
+
+    if(expande) {
+        const objectFormated = getFormatSql(lastSql, false);
+        localStorage.setItem("objectTable", JSON.stringify(objectFormated));
+        document.getElementById("expande").textContent = "expand_less";
+    } else {
+        const objectFormated = getFormatSql(lastSql, true);
+        localStorage.setItem("objectTable", JSON.stringify(objectFormated));
+        document.getElementById("expande").textContent = "expand_more";
+    }
+    
+    renderCheckBox();
+}
+
+function checkMarked(e) {
+    console.log(e.target)
+}
 
 function renderTable(dataTables) {
     return `
@@ -86,6 +121,7 @@ function renderTable(dataTables) {
     <table id='customers'>
         <thead>
             <tr>
+                <th class='no-style-table'><span class='material-icons' id='expande' onclick='expandeOrNot()'>expand_more</span></th>
                 <th>CAMPO</th>
                 <th>VALOR</th>
             </tr>
@@ -97,7 +133,7 @@ function renderTable(dataTables) {
 }
 
 function createTrTable(key, value) {
-    return `<tr class='trTableValue'><td class='key'>${key}</td><td class='value'><input class='inputValue' type='text' value='${value}'></td></tr>`
+    return `<tr class='trTableValue'><td class='checkBox no-style-table'><span></span></td><td class='key'>${key}</td><td class='value'><input class='inputValue' type='text' value='${value}'></td></tr>`
 }
 
 function renderReturn(e) {
@@ -125,10 +161,12 @@ function renderReturn(e) {
         let dataTable = "";
 
         for (key in objectFormated) {
-            dataTable += createTrTable(key, objectFormated[key]);
+            dataTable += createTrTable(key, objectFormated[key].value);
         }
 
         result.innerHTML = renderTable(dataTable);
+
+        renderCheckBox();
 
         document.getElementById("result").firstElementChild.scrollIntoView();
     }
@@ -177,7 +215,7 @@ function searchFields() {
             for (key in objectFormated) {
                 let field = key.toLocaleLowerCase().indexOf(search.toLocaleLowerCase());
                 if (field != -1) {
-                    dataTable += createTrTable(key, objectFormated[key]);
+                    dataTable += createTrTable(key, objectFormated[key].value);
                 }
             }
 
@@ -199,7 +237,7 @@ function clearFilter() {
     dataTable = "";
 
     for (key in objectFormated) {
-        dataTable += createTrTable(key, objectFormated[key]);
+        dataTable += createTrTable(key, objectFormated[key].value);
     }
 
     result.innerHTML = renderTable(dataTable);
@@ -232,7 +270,9 @@ async function getNewInsert() {
         let key = trs[i].getElementsByClassName('key')[0].innerText;
         let value = trs[i].getElementsByClassName('value')[0].getElementsByClassName('inputValue')[0].value;
 
-        objectForNewInsert[key] = value;
+        if (objectForNewInsert[key].marked) {
+            objectForNewInsert[key].value = value;
+        }
     }
 
     let newInsert = sqlForNewInsert.substring(0, sqlForNewInsert.indexOf('(') - 1);
@@ -240,11 +280,13 @@ async function getNewInsert() {
     let preValues = '(';
 
     for (key in objectForNewInsert) {
-        preFields += `${key}, `;
-        if (objectForNewInsert[key].toLocaleLowerCase() == 'null') {
-            preValues += `${objectForNewInsert[key]}, `;
-        } else {
-            preValues += `'${objectForNewInsert[key]}', `;
+        if (objectForNewInsert[key].marked) {
+            preFields += `${key}, `;
+            if (objectForNewInsert[key].value.toLocaleLowerCase().trim() == 'null') {
+                preValues += `${objectForNewInsert[key].value}, `;
+            } else {
+                preValues += `'${objectForNewInsert[key].value}', `;
+            }
         }
     }
 

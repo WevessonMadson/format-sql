@@ -187,8 +187,17 @@ button {
   background-color: var(--tr-bg-color-even);
 }
 
-#customers tr:hover {
+ tr:hover {
   background-color: var(--tr-bg-color-hover);
+}
+
+#customers tr td.no-style-table,
+#customers tr th.no-style-table {
+  background-color: var(--body-bg-color);
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  width: 15px;
 }
 
 .inputValue {
